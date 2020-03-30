@@ -14,16 +14,19 @@ A embedded system that can **play monophonic music**. Here`s a [link](google.com
 
 <a name="components"></a>Components
 ======
+
 Here are all components used in this project:
 *  **Atmel SAM E70 XPLAINED** ([link](https://www.microchip.com/developmenttools/ProductDetails/atsame70-xpld))
 * **OLED1XPLAINEDpro** ([link](https://www.microchip.com/developmenttools/ProductDetails/atoled1-xpro))
 * **1x BUZZER**
 *  **2x JUMPERS (female-to-female or male-to-female)**
 *  **1x PROTOBOARD (only necessary when jumpers are male-to-female)**
+
 <a name="connections"></a>Connections
 ======
 The connection needs to be as the following:
 ![alt text](https://github.com/Gustavobb/musical-embedded-system/blob/master/connections.png)
+
 <a name="setup"></a>Set-up/Running the project
 ======
 After connecting the [components](#components), the cable must be plugged in the computer USB. To compile the program, the software used is **Atmel Studio 7.0**, so it needs to be opened in order to run the project. 
@@ -38,6 +41,7 @@ After connecting the [components](#components), the cable must be plugged in the
 | Led 3 | Higher frequencies      |    PIOB2 |
 | Buzzer| Play frequency      |    PIOA3 / GND |
 | Screen | Displays music name      |    --------------- |
+
 <a name="codeStructure"></a>Code Structure
 ===
 The code structure is expalined below: 
