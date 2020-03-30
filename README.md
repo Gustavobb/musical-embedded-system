@@ -28,7 +28,7 @@ Here are all components used in this project:
 ======
 The connection needs to be as the following:
 
-![alt text](https://github.com/Gustavobb/musical-embedded-system/blob/master/APS-Musical/connections.png)
+![alt text](https://github.com/Gustavobb/musical-embedded-system/blob/master/connections.png)
 
 <a name="setup"></a>Set-up/Running the project
 ======
