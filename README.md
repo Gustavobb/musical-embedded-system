@@ -3,9 +3,13 @@
 A embedded system that can **play monophonic music**. Here`s a [link](google.com) to a video that demonstrates the project working.
 ##### Table of contents:
 [Components](#components)
+
 [Connections](#connections)
+
 [Set-up/Running the project](#setup)
+
 [Code Structure](#codeStructure)
+
 [References/Credits](#referencescredits)
 <a name="components"></a>Components
 ======
