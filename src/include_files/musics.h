@@ -69,7 +69,6 @@ int mario_main_tempo[] = {
 	12, 12, 12, 12,
 };
 
-//Musica piratas do caribe
 //By Xitang 2016.06.27  @ github
 
 Song_to_play pirates_of_the_caribean_song;
