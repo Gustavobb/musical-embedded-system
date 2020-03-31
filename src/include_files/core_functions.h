@@ -90,10 +90,10 @@ void play(Song_to_play song) {
 	for (int note = 0; note < size_of_song; note++) {
 		
 		note_duration = song.tempo[note] / song.velocity;
-		
-		if (but_play_flag) { pause(); }
 			
 		buzz(song.music[note], note_duration, song.max_value, song.min_value);
+		
+		if (but_play_flag) { pause(); }
 		
 		if (but_next_flag || but_prev_flag) { break; }
 		
