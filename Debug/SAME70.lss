@@ -3409,7 +3409,7 @@ volatile char but_next_flag;
 volatile char but_prev_flag;
 volatile char but_play_flag;
 
-void but_next_callback(void){ but_next_flag = 1; delay_s(1); }
+void but_next_callback(void){ but_next_flag = 1; delay_ms(300); }
   4014e4:	b508      	push	{r3, lr}
   4014e6:	2201      	movs	r2, #1
   4014e8:	4b02      	ldr	r3, [pc, #8]	; (4014f4 <but_next_callback+0x10>)
@@ -3419,11 +3419,11 @@ void but_next_callback(void){ but_next_flag = 1; delay_s(1); }
   4014f0:	4798      	blx	r3
   4014f2:	bd08      	pop	{r3, pc}
   4014f4:	204049f0 	.word	0x204049f0
-  4014f8:	0303af6b 	.word	0x0303af6b
+  4014f8:	00e7816d 	.word	0x00e7816d
   4014fc:	20400001 	.word	0x20400001
 
 00401500 <but_prev_callback>:
-void but_prev_callback(void){ but_prev_flag = 1; delay_s(1);}
+void but_prev_callback(void){ but_prev_flag = 1; delay_ms(300); }
   401500:	b508      	push	{r3, lr}
   401502:	2201      	movs	r2, #1
   401504:	4b02      	ldr	r3, [pc, #8]	; (401510 <but_prev_callback+0x10>)
@@ -3433,11 +3433,11 @@ void but_prev_callback(void){ but_prev_flag = 1; delay_s(1);}
   40150c:	4798      	blx	r3
   40150e:	bd08      	pop	{r3, pc}
   401510:	20401170 	.word	0x20401170
-  401514:	0303af6b 	.word	0x0303af6b
+  401514:	00e7816d 	.word	0x00e7816d
   401518:	20400001 	.word	0x20400001
 
 0040151c <but_play_callback>:
-void but_play_callback(void){ but_play_flag = 1; delay_s(1);}
+void but_play_callback(void){ but_play_flag = 1; delay_ms(300); }
   40151c:	b508      	push	{r3, lr}
   40151e:	2201      	movs	r2, #1
   401520:	4b02      	ldr	r3, [pc, #8]	; (40152c <but_play_callback+0x10>)
@@ -3447,7 +3447,7 @@ void but_play_callback(void){ but_play_flag = 1; delay_s(1);}
   401528:	4798      	blx	r3
   40152a:	bd08      	pop	{r3, pc}
   40152c:	20403718 	.word	0x20403718
-  401530:	0303af6b 	.word	0x0303af6b
+  401530:	00e7816d 	.word	0x00e7816d
   401534:	20400001 	.word	0x20400001
 
 00401538 <init>:

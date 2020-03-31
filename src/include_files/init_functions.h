@@ -16,9 +16,9 @@ volatile char but_next_flag;
 volatile char but_prev_flag;
 volatile char but_play_flag;
 
-void but_next_callback(void){ but_next_flag = 1; delay_s(1); }
-void but_prev_callback(void){ but_prev_flag = 1; delay_s(1); }
-void but_play_callback(void){ but_play_flag = 1; delay_s(1); }
+void but_next_callback(void){ but_next_flag = 1; delay_ms(300); }
+void but_prev_callback(void){ but_prev_flag = 1; delay_ms(300); }
+void but_play_callback(void){ but_play_flag = 1; delay_ms(300); }
 
 void init(void){
 	board_init();
