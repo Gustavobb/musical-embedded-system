@@ -16,9 +16,9 @@ volatile char but_next_flag;
 volatile char but_prev_flag;
 volatile char but_play_flag;
 
-void but_next_callback(void){ but_next_flag = 1; delay_ms(300); }
-void but_prev_callback(void){ but_prev_flag = 1; delay_ms(300); }
-void but_play_callback(void){ but_play_flag = 1; delay_ms(300); }
+void but_next_callback(void) { but_next_flag = 1; }
+void but_prev_callback(void) { but_prev_flag = 1; }
+void but_play_callback(void) { but_play_flag = 1; }
 
 void init(void){
 	board_init();
@@ -75,8 +75,8 @@ void create_songs() {
 		mario_main_song.music[i] = mario_main[i];
 		mario_main_song.tempo[i] = mario_main_tempo[i];
 		
-		if (mario_main_song.max_value < mario_main[i]) { mario_main_song.max_value = mario_main[i]; }
-		if (mario_main_song.min_value > mario_main[i] && mario_main[i] != 0) { mario_main_song.min_value = mario_main[i]; }
+		if (mario_main_song.max_value < mario_main[i]) mario_main_song.max_value = mario_main[i];
+		if (mario_main_song.min_value > mario_main[i] && mario_main[i] != 0) mario_main_song.min_value = mario_main[i];
 	}
 	mario_main_song.velocity = 0.15;
 	
@@ -88,8 +88,8 @@ void create_songs() {
 		pirates_of_the_caribean_song.music[i] = pirates_of_the_caribean[i];
 		pirates_of_the_caribean_song.tempo[i] = pirates_of_the_caribean_tempo[i];
 		
-		if (pirates_of_the_caribean_song.max_value < pirates_of_the_caribean[i]) { pirates_of_the_caribean_song.max_value = pirates_of_the_caribean[i]; }
-		if (pirates_of_the_caribean_song.min_value > pirates_of_the_caribean[i] && pirates_of_the_caribean[i] != 0) { pirates_of_the_caribean_song.min_value = pirates_of_the_caribean[i]; }
+		if (pirates_of_the_caribean_song.max_value < pirates_of_the_caribean[i]) pirates_of_the_caribean_song.max_value = pirates_of_the_caribean[i];
+		if (pirates_of_the_caribean_song.min_value > pirates_of_the_caribean[i] && pirates_of_the_caribean[i] != 0) pirates_of_the_caribean_song.min_value = pirates_of_the_caribean[i];
 	}
 	pirates_of_the_caribean_song.velocity = 1.5;
 	
@@ -101,8 +101,8 @@ void create_songs() {
 		underworld_mario_song.music[i] = underworld_mario[i];
 		underworld_mario_song.tempo[i] = underworld_mario_tempo[i];
 		
-		if (underworld_mario_song.max_value < underworld_mario[i]) { underworld_mario_song.max_value = underworld_mario[i]; }
-		if (underworld_mario_song.min_value > underworld_mario[i] && underworld_mario[i] != 0) { underworld_mario_song.min_value = underworld_mario[i]; }
+		if (underworld_mario_song.max_value < underworld_mario[i]) underworld_mario_song.max_value = underworld_mario[i];
+		if (underworld_mario_song.min_value > underworld_mario[i] && underworld_mario[i] != 0) underworld_mario_song.min_value = underworld_mario[i];
 	}
 	underworld_mario_song.velocity = 1;
 }

@@ -7,7 +7,7 @@
 
 
 /************************************************************************************************************************/
-/* Code adaptation from                                                                                                          */
+/* Code adaptation from                                                                                                 */
 /* https://www.princetronics.com/supermariothemesong/                                                                   */
 /************************************************************************************************************************/
 
@@ -43,14 +43,14 @@ int main(void)
 		start_playing = 0;
 		
 		if (but_next_flag) {
-			if (rand_song == 3) { rand_song = 0; }
+			if (rand_song == 3) rand_song = 0;
 			rand_song ++;
 			start_playing = 1;
 			but_next_flag = 0;
 		}
 		
 		if (but_prev_flag) {
-			if (rand_song == 1) { rand_song = 4; }
+			if (rand_song == 1) rand_song = 4;
 			rand_song --;
 			start_playing = 1;
 			but_prev_flag = 0;
@@ -58,6 +58,7 @@ int main(void)
 
 		if (but_play_flag) {
 			start_playing = 1;
+			delay_ms(300);
 			but_play_flag = 0;
 		}
 	}
