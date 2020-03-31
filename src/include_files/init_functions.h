@@ -41,17 +41,14 @@ void init(void){
 	pio_set_output(LED1_PIO, LED1_PIO_IDX_MASK, 0, 0, 0);
 	pio_set_output(LED2_PIO, LED2_PIO_IDX_MASK, 0, 0, 0);
 	pio_set_output(LED3_PIO, LED3_PIO_IDX_MASK, 0, 0, 0);
-	pio_set_input(BUT1_PIO, BUT1_PIO_IDX_MASK, PIO_PULLUP);
-	pio_set_input(BUT2_PIO, BUT2_PIO_IDX_MASK, PIO_PULLUP);
-	pio_set_input(BUT3_PIO, BUT3_PIO_IDX_MASK, PIO_PULLUP);
 	
-	pio_handler_set(BUT1_PIO, BUT1_PIO_ID, BUT1_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but_next_callback);
+	pio_handler_set(BUT1_PIO, BUT1_PIO_ID, BUT1_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but_prev_callback);
 	pio_enable_interrupt(BUT1_PIO, BUT1_PIO_IDX_MASK);
 	
 	NVIC_EnableIRQ(BUT1_PIO_ID);
 	NVIC_SetPriority(BUT1_PIO_ID, 0);
 	
-	pio_handler_set(BUT2_PIO, BUT2_PIO_ID, BUT2_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but_next_callback);
+	pio_handler_set(BUT2_PIO, BUT2_PIO_ID, BUT2_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but_play_callback);
 	pio_enable_interrupt(BUT2_PIO, BUT2_PIO_IDX_MASK);
 	
 	NVIC_EnableIRQ(BUT2_PIO_ID);

@@ -22,6 +22,10 @@ int main(void)
 	int rand_song = 1;
 	int start_playing = 0;
 	
+	but_next_flag = 0;
+	but_prev_flag = 0;
+	but_play_flag = 0;
+	
 	char mario_string[] = "Mario Main Theme";
 	char pirates_string[] = "Pirates of the Caribbean";
 	char underworld_string[] = "Underworld Mario Theme";
