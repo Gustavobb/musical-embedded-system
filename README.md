@@ -1,6 +1,6 @@
 # APS-Musical
 
-A embedded system that can **play monophonic music**. Here`s a [link](google.com) to a video that demonstrates the project working.
+A embedded system that can **play monophonic music**. Here`s a [link](https://youtu.be/Lt8oaKrzMsE) to a video that demonstrates the project working.
 ##### Table of contents:
 [Components](#components)
 
