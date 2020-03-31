@@ -58,7 +58,6 @@ int main(void)
 
 		if (but_play_flag) {
 			start_playing = 1;
-			delay_ms(300);
 			but_play_flag = 0;
 		}
 	}

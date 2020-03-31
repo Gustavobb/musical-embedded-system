@@ -70,14 +70,12 @@ void buzz(int frequency, int length, int min, int range) {
 
 void pause() {
 	
-	delay_ms(300);
 	but_play_flag = 0;
 	gfx_mono_draw_string("PAUSE", 50, 20, &sysfont);
 
 	while (1) if (but_play_flag || but_prev_flag || but_next_flag) break; 
 	
 	gfx_mono_draw_string("PLAY ", 50, 20, &sysfont);
-	delay_ms(300);
 	but_play_flag = 0;
 }
 
@@ -94,7 +92,7 @@ void play(Song_to_play song) {
 			
 		buzz(song.music[note], note_duration, song.min_value, range);
 		
-		if (but_next_flag || but_prev_flag) { delay_ms(300); break; }
+		if (but_next_flag || but_prev_flag) { break; }
 		
 		delay_ms(note_duration * 1.30);
 	}
