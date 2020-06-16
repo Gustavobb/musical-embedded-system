@@ -14,7 +14,7 @@ Song_to_play mario_main_song;
 
 //by Prince @ princetronics.com
 
-int mario_main[] = {
+const int mario_main[] = {
 	NOTE_E7, NOTE_E7, 0, NOTE_E7,
 	0, NOTE_C7, NOTE_E7, 0,
 	NOTE_G7, 0, 0,  0,
@@ -42,7 +42,7 @@ int mario_main[] = {
 };
 
 
-int mario_main_tempo[] = {
+const int mario_main_tempo[] = {
 	12, 12, 12, 12,
 	12, 12, 12, 12,
 	12, 12, 12, 12,
@@ -73,7 +73,7 @@ int mario_main_tempo[] = {
 
 Song_to_play pirates_of_the_caribean_song;
 
-int pirates_of_the_caribean[] = {
+const int pirates_of_the_caribean[] = {
    NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, 0, 
    NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, 0, 
    NOTE_C5, NOTE_D5, NOTE_B4, NOTE_B4, 0,
@@ -125,7 +125,7 @@ int pirates_of_the_caribean[] = {
    NOTE_B4, NOTE_C5, 0, NOTE_B4, 0, NOTE_A4
 };
 
-int pirates_of_the_caribean_tempo[] = {
+const int pirates_of_the_caribean_tempo[] = {
   125, 125, 250, 125, 125, 
   125, 125, 250, 125, 125,
   125, 125, 250, 125, 125,
@@ -181,7 +181,7 @@ int pirates_of_the_caribean_tempo[] = {
 
 Song_to_play underworld_mario_song;
 
-int underworld_mario[] = {
+const int underworld_mario[] = {
 	NOTE_C4, NOTE_C5, NOTE_A3, NOTE_A4,
 	NOTE_AS3, NOTE_AS4, 0,
 	0,
@@ -203,7 +203,7 @@ int underworld_mario[] = {
 	0, 0, 0
 };
 
-int underworld_mario_tempo[] = {
+const int underworld_mario_tempo[] = {
 	83, 83, 83, 83,
 	83, 83, 166,
 	333,

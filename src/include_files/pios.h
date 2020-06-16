@@ -20,18 +20,21 @@
 #define BUT1_PIO_ID        ID_PIOD
 #define BUT1_PIO_IDX       28
 #define BUT1_PIO_IDX_MASK  (1u << BUT1_PIO_IDX)
+#define BUT1_PRIORITY 0
 
 // button2
 #define BUT2_PIO           PIOC
 #define BUT2_PIO_ID        ID_PIOC
 #define BUT2_PIO_IDX       31
 #define BUT2_PIO_IDX_MASK  (1u << BUT2_PIO_IDX)
+#define BUT2_PRIORITY 0
 
 // button3
 #define BUT3_PIO           PIOA
 #define BUT3_PIO_ID        ID_PIOA
 #define BUT3_PIO_IDX       19
 #define BUT3_PIO_IDX_MASK  (1u << BUT3_PIO_IDX)
+#define BUT3_PRIORITY 0
 
 // led1
 #define LED1_PIO           PIOA

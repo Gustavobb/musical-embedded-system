@@ -6,11 +6,15 @@
 
 #ifndef INCFUNCTIONS_H_
 #define INCFUNCTIONS_H_
+#define MICRO_SECONDS 1000000
+#define NUMBER_OF_SECONDS 1000
 
 void pause();
 void oled_draw(char* string, int size);
 void buzz(int frequency, int length, int min, int range);
 void play(Song_to_play song);
+
+void draw_music_status(char* status) { gfx_mono_draw_string(status, 50, 20, &sysfont); }
 
 void oled_draw(char* string, int size) {
 	
@@ -18,7 +22,7 @@ void oled_draw(char* string, int size) {
 	char up_part[14];
 	char below_part[14];
 	
-	if (size > 26) { gfx_mono_draw_string("Error", 50, 10, &sysfont); return; }
+	if (size > 26) { draw_music_status("Error"); return; }
 		
 	if ( size > 13) {
 		
@@ -40,19 +44,19 @@ void oled_draw(char* string, int size) {
 		
 	} else { gfx_mono_draw_string(string, 0, 10, &sysfont); }
 	
-	gfx_mono_draw_string("PLAY ", 50, 20, &sysfont);
+	draw_music_status("PLAY");
 	delay_ms(300);
 }
 
 void buzz(int frequency, int length, int min, int range) {
 	
-	int delay = 1000000 / frequency;
+	int delay = MICRO_SECONDS / frequency; // calculate delay between transitions
 	
 	if (frequency <= min + range) pio_clear(LED1_PIO, LED1_PIO_IDX_MASK);
-	if (frequency > min + range && frequency <= min + 2*range) pio_clear(LED2_PIO, LED2_PIO_IDX_MASK);
-	if (frequency > min + 2*range) pio_clear(LED3_PIO, LED3_PIO_IDX_MASK);
+	else if (frequency > min + range && frequency <= min + 2*range) pio_clear(LED2_PIO, LED2_PIO_IDX_MASK);
+	else if (frequency > min + 2*range) pio_clear(LED3_PIO, LED3_PIO_IDX_MASK);
 	
-	for (int i = 0; i < (length * 1000)/delay; i++) {
+	for (int i = 0; i < (length * NUMBER_OF_SECONDS)/delay; i++) {
 		
 		if (but_play_flag) pause();
 			
@@ -73,11 +77,12 @@ void pause() {
 	
 	delay_ms(300);
 	but_play_flag = 0;
-	gfx_mono_draw_string("PAUSE", 50, 20, &sysfont);
+	draw_music_status("PAUSE");
 
-	while (1) if (but_play_flag || but_prev_flag || but_next_flag) break; 
+	pmc_sleep(SAM_PM_SMODE_SLEEP_WFI);
+	while( !(but_play_flag || but_prev_flag || but_next_flag) );
 	
-	gfx_mono_draw_string("PLAY ", 50, 20, &sysfont);
+	draw_music_status("PLAY");
 	delay_ms(300);
 	but_play_flag = 0;
 }
@@ -85,7 +90,8 @@ void pause() {
 void play(Song_to_play song) {
 	
 	int size_of_song = sizeof(song.music) / sizeof(int);
-	int note_duration, range = (song.max_value - song.min_value)/3;;
+	int note_duration;
+	int range = (song.max_value - song.min_value)/3;
 	
 	for (int note = 0; note < size_of_song; note++) {
 		
@@ -97,10 +103,10 @@ void play(Song_to_play song) {
 		
 		if (but_next_flag || but_prev_flag) { delay_ms(300); break; }
 		
-		delay_ms(note_duration * 1.30);
+		delay_ms(note_duration * 1.30); // value adjusted to make song play smoother
 	}
 		
-	gfx_mono_draw_string("PAUSE", 50, 20, &sysfont);
+	draw_music_status("PAUSE");
 }
 
 #endif /* INCFUNCTIONS_H_ */

@@ -5,7 +5,6 @@
  * Aps 1 musical
  */
 
-
 /************************************************************************************************************************/
 /* Code adaptation from                                                                                                 */
 /* https://www.princetronics.com/supermariothemesong/                                                                   */
@@ -36,8 +35,8 @@ int main(void)
 	{
 		if (start_playing) {
 			if (rand_song == 1) { oled_draw(mario_string, sizeof(mario_string)/sizeof(char)); play(mario_main_song); }
-			if (rand_song == 2) { oled_draw(pirates_string, sizeof(pirates_string)/sizeof(char)); play(pirates_of_the_caribean_song); }
-			if (rand_song == 3) { oled_draw(underworld_string, sizeof(underworld_string)/sizeof(char)); play(underworld_mario_song); }
+			else if (rand_song == 2) { oled_draw(pirates_string, sizeof(pirates_string)/sizeof(char)); play(pirates_of_the_caribean_song); }
+			else if (rand_song == 3) { oled_draw(underworld_string, sizeof(underworld_string)/sizeof(char)); play(underworld_mario_song); }
 		}
 		
 		start_playing = 0;

@@ -46,65 +46,53 @@ void init(void){
 	pio_enable_interrupt(BUT1_PIO, BUT1_PIO_IDX_MASK);
 	
 	NVIC_EnableIRQ(BUT1_PIO_ID);
-	NVIC_SetPriority(BUT1_PIO_ID, 0);
+	NVIC_SetPriority(BUT1_PIO_ID, BUT1_PRIORITY);
 	
 	pio_handler_set(BUT2_PIO, BUT2_PIO_ID, BUT2_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but_play_callback);
 	pio_enable_interrupt(BUT2_PIO, BUT2_PIO_IDX_MASK);
 	
 	NVIC_EnableIRQ(BUT2_PIO_ID);
-	NVIC_SetPriority(BUT2_PIO_ID, 0);
+	NVIC_SetPriority(BUT2_PIO_ID, BUT2_PRIORITY);
 	
 	pio_handler_set(BUT3_PIO, BUT3_PIO_ID, BUT3_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but_next_callback);
 	pio_enable_interrupt(BUT3_PIO, BUT3_PIO_IDX_MASK);
 	
 	NVIC_EnableIRQ(BUT3_PIO_ID);
-	NVIC_SetPriority(BUT3_PIO_ID, 0);
+	NVIC_SetPriority(BUT3_PIO_ID, BUT3_PRIORITY);
 	
 	pio_set(LED1_PIO, LED1_PIO_IDX_MASK);
 	pio_set(LED2_PIO, LED2_PIO_IDX_MASK);
 	pio_set(LED3_PIO, LED3_PIO_IDX_MASK);
 }
 
-void create_songs() {
+void setup_music_values(Song_to_play *song, int song_data[], int song_size, int song_time[], int velocity) {
+	song->max_value = song_data[0];
+	song->min_value = song_data[0];
+	
+	for (int i = 0; i < song_size; i++) {
+		
+		song->music[i] = song_data[i];
+		song->tempo[i] = song_time[i];
+		
+		if (song->max_value < song_data[i]) song->max_value = song_data[i];
+		if (song->min_value > song_data[i] && song_data[i] != 0) song->min_value = song_data[i];
+	}
+	song->velocity = velocity;
+}
 
+void create_songs() {
+	
 	mario_main_song.max_value = mario_main[0];
 	mario_main_song.min_value = mario_main[0];
-	
-	for (int i = 0; i < sizeof(mario_main) / sizeof(int); i++) {
-		
-		mario_main_song.music[i] = mario_main[i];
-		mario_main_song.tempo[i] = mario_main_tempo[i];
-		
-		if (mario_main_song.max_value < mario_main[i]) mario_main_song.max_value = mario_main[i];
-		if (mario_main_song.min_value > mario_main[i] && mario_main[i] != 0) mario_main_song.min_value = mario_main[i];
-	}
-	mario_main_song.velocity = 0.15;
+	setup_music_values(&mario_main_song, mario_main, sizeof(mario_main) / sizeof(int), mario_main_tempo, 0.15);
 	
 	pirates_of_the_caribean_song.max_value = pirates_of_the_caribean[0];
 	pirates_of_the_caribean_song.min_value = pirates_of_the_caribean[0];
-	
-	for (int i = 0; i < sizeof(pirates_of_the_caribean) / sizeof(int); i++) {
-		
-		pirates_of_the_caribean_song.music[i] = pirates_of_the_caribean[i];
-		pirates_of_the_caribean_song.tempo[i] = pirates_of_the_caribean_tempo[i];
-		
-		if (pirates_of_the_caribean_song.max_value < pirates_of_the_caribean[i]) pirates_of_the_caribean_song.max_value = pirates_of_the_caribean[i];
-		if (pirates_of_the_caribean_song.min_value > pirates_of_the_caribean[i] && pirates_of_the_caribean[i] != 0) pirates_of_the_caribean_song.min_value = pirates_of_the_caribean[i];
-	}
-	pirates_of_the_caribean_song.velocity = 1.5;
+	setup_music_values(&pirates_of_the_caribean_song, pirates_of_the_caribean, sizeof(pirates_of_the_caribean) / sizeof(int), pirates_of_the_caribean_tempo, 1.5);
 	
 	underworld_mario_song.max_value = underworld_mario[0];
 	underworld_mario_song.min_value = underworld_mario[0];
-	
-	for (int i = 0; i < sizeof(underworld_mario) / sizeof(int); i++) {
-		
-		underworld_mario_song.music[i] = underworld_mario[i];
-		underworld_mario_song.tempo[i] = underworld_mario_tempo[i];
-		
-		if (underworld_mario_song.max_value < underworld_mario[i]) underworld_mario_song.max_value = underworld_mario[i];
-		if (underworld_mario_song.min_value > underworld_mario[i] && underworld_mario[i] != 0) underworld_mario_song.min_value = underworld_mario[i];
-	}
-	underworld_mario_song.velocity = 1;
+	setup_music_values(&underworld_mario_song, underworld_mario, sizeof(underworld_mario) / sizeof(int), underworld_mario_tempo, 1);
 }
 
 #endif /* INIT_FUNCTIONS_H_ */
